@@ -1,6 +1,7 @@
 package org.launchcode.spaday.controllers;
 
 import org.launchcode.spaday.models.Client;
+import org.launchcode.spaday.persistance.UserDictionary;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,8 +12,16 @@ import java.util.ArrayList;
 @Controller
 public class SpaDayController {
 
+//    private UserDictionary userDictionary;
+//
+//    public SpaDayController(UserDictionary userDictionary) {
+//        this.userDictionary = userDictionary;
+//    }
+
+
     @GetMapping
     public String displayClientForm (Model model) {
+
         return "serviceSelection";
     }
 
@@ -21,6 +30,8 @@ public class SpaDayController {
         Client newClient = new Client(skintype, manipedi);
         newClient.setAppropriateFacials(skintype);
         model.addAttribute("client" , newClient);
+
+//        model.addAttribute("user", userDictionary.userArrayList.get(0));
 
         return "menu";
     }
