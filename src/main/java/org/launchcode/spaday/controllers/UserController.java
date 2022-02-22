@@ -21,7 +21,6 @@ public class UserController {
 
     @GetMapping("/add")
     public String displayAddUserForm(Model model) {
-        model.addAttribute("title", "Add User");
         model.addAttribute(new User());
         return "user/add";
     }
@@ -30,14 +29,13 @@ public class UserController {
     public String processAddUserForm(Model model, @ModelAttribute @Valid User user,
                                      Errors errors, String verify) {
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add User");
             return "user/add";
         }
-            model.addAttribute("user", user);
-//            userDictionary.userArrayList.add(user);
-            model.addAttribute("verify", verify);
-            model.addAttribute("username", user.getUsername());
-            model.addAttribute("email", user.getEmail());
+//            model.addAttribute("user", user);
+////            userDictionary.userArrayList.add(user);
+//            model.addAttribute("verify", verify);
+//            model.addAttribute("username", user.getUsername());
+//            model.addAttribute("email", user.getEmail());
             if (user.getPassword().equals(verify)) {
                 return "user/index";
             } else {
@@ -45,7 +43,4 @@ public class UserController {
                 return "user/add";
             }
         }
-//            return "redirect:";
-
-
 }
